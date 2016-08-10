@@ -23,16 +23,11 @@ bind(
 )
 
 # boringssl or openssl is required by grpc
-new_git_repository(
-    name = 'boringssl',
-    remote = 'https://boringssl.googlesource.com/boringssl',
-    commit = '82aa28fa81222a4a614ccf43fbc5b6e9bf02b588',
-    build_file = 'BUILD.boringssl',
+git_repository(
+  name = 'boringssl',
+  remote = 'https://github.com/google/boringssl.git',
+  commit = 'd0d28eb6adb6403e00c5861673c62f1203baade7',
 )
-
-# Go is required to generate some parts of BoringSSL
-load("@bazel_tools//tools/build_rules/go:def.bzl", "go_repositories")
-go_repositories()
 
 bind(
     name = 'libssl',
